@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
+var console = require('console').console;
+
 
 app.set('port', (process.env.PORT || 3000));
-
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
@@ -22,14 +23,21 @@ var bot = lineBot({
 });
 
 
-const linebotParser = bot.parser();
-
 app.post('/', function(request,response){
-  response.render('pages/in');
+  var linebotParser = bot.parser();
+
+  console.log(linebotParser,10);
+
 });
-app.get('/', function(request, response) {
+
+
+app.get('/', function(request, response){
   response.render('pages/index');
+
+  console.log(10);
+
 });
+
 
 bot.on('message', function(event){
   console.log(event);
@@ -41,9 +49,3 @@ var server = app.listen(process.env.PORT || 8080, function() {
   console.log("App now running on port", port);
 });
 
-
-
-//
-// app.listen(app.get('port'), function() {
-//   console.log('Node app is running on port', app.get('port'));
-// });
