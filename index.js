@@ -14,6 +14,11 @@ app.get('/', function(request, response) {
 });
 
 
+
+
+
+
+
 var lineBot = require('linebot'),
     channelId = 1503342448,
     channelSecret = '15f3c6563c1b68b221aca3a7f0bac0ad',
@@ -25,6 +30,22 @@ var bot = lineBot({
   channelAccessToken: token
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+const linebotParser = bot.parser();
+app.post('/', linebotParser);
+
+bot.on('message', function(event) {
+  console.log(event);
 });
+
+
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
+
+
+
+//
+// app.listen(app.get('port'), function() {
+//   console.log('Node app is running on port', app.get('port'));
+// });
