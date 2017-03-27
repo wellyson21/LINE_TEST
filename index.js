@@ -40,7 +40,8 @@ app.set('view engine', 'ejs');
 //
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  // response.render('pages/index');
+  console.log('home');
 });
 
 app.listen(app.get('port'), function() {
