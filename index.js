@@ -1,7 +1,5 @@
 var express = require('express');
 var app = express();
-var console = require('console').console;
-
 
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));
@@ -26,15 +24,11 @@ var bot = lineBot({
 app.post('/', function(request,response){
   var linebotParser = bot.parser();
 
-  console.log(linebotParser,10);
-
 });
 
 
 app.get('/', function(request, response){
   response.render('pages/index');
-
-  console.log(10);
 
 });
 
