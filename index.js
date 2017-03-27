@@ -27,24 +27,23 @@ bot.on('message', function(event) {
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
-var server = app.listen(process.env.PORT || app.get('port'), function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
-});
-
-
+// var server = app.listen(process.env.PORT || app.get('port'), function() {
+//   var port = server.address().port;
+//   console.log("App now running on port", port);
+// });
 
 
 // // views is directory for all template files
 // app.set('views', __dirname + '/views');
 // app.set('view engine', 'ejs');
 //
-// app.get('/', function(request, response) {
-//   response.render('pages/index');
-// });
-//
-// app.listen(app.get('port'), function() {
-//   console.log('Node app is running on port', app.get('port'));
-// });
+
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 
 
