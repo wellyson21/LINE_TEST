@@ -9,11 +9,6 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
-
-
 
 var lineBot = require('linebot'),
     channelId = '1503342448',
@@ -26,8 +21,15 @@ var bot = lineBot({
   channelAccessToken: token
 });
 
+
 const linebotParser = bot.parser();
-app.post('/', linebotParser);
+
+app.post('/', function(request,response){
+  response.render('pages/in');
+});
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
 
 bot.on('message', function(event){
   console.log(event);
