@@ -22,33 +22,32 @@ var bot = lineBot({
   channelAccessToken: token
 });
 
+/*#########database##############*/
+var pg = require('pg');
+var config = {
+  user: 'esthszoitgheja',
+  database: 'df6l0v1d2h7f9g',
+  password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
+  host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
+  port: '5432'
+};
+var pool = new pg.Pool(config);
+
+
 app.post('/webHooks', function(request,response){
   response.render('pages/in');
   const linebotParser = bot.parser();
   console.log(linebotParser);
 
-  var pg = require('pg');
-
-  var config = {
-    user: 'esthszoitgheja',
-    database: 'df6l0v1d2h7f9g',
-    password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
-    host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
-    port: '5432'
-  };
-
-  var pool = new pg.Pool(config);
-
-
-  pool.connect(function(err,client,done){
-
-    if(err) return '';
-
-    client.query('create table teste2(id int not null,anyText varchar(200))');
-
-    done(err);
-
-  });
+  // pool.connect(function(err,client,done){
+  //
+  //   if(err) return '';
+  //
+  //   client.query('create table teste2(id int not null,anyText varchar(200))');
+  //
+  //   done(err);
+  //
+  // });
 
 
 });
@@ -68,20 +67,6 @@ bot.on('message', function(event){
 
 var server = app.listen(process.env.PORT, function() {
   var port = server.address().port;
-
-
-  var pg = require('pg');
-
-  var config = {
-    user: 'esthszoitgheja',
-    database: 'df6l0v1d2h7f9g',
-    password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
-    host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
-    port: '5432'
-  };
-
-  var pool = new pg.Pool(config);
-
 
    pool.connect(function(err,client,done){
 
