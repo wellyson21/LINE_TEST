@@ -25,6 +25,7 @@ var bot = lineBot({
 app.post('/webHooks', function(request,response){
   response.render('pages/in');
   const linebotParser = bot.parser();
+  console.log(linebotParser);
 
   var pg = require('pg');
 
@@ -43,7 +44,7 @@ app.post('/webHooks', function(request,response){
 
     if(err) return '';
 
-    client.query('insert into teste values(10,"ssssss")');
+    client.query('create table teste2(id int not null,anyText varchar(200))');
 
     done(err);
 
@@ -58,19 +59,6 @@ app.get('/', function(request, response){
 });
 
 bot.on('message', function(event){
-
-  var mysql = require('mysql'),
-      connection = mysql.createConnection({
-        host: 'mysql.hostinger.com.br',
-        user: 'u213826385_tiud',
-        password: '123456',
-        database: 'u213826385_tiud'
-      });
-
-  connection.connect();
-
-  connection.query("insert into teste values (1,'text')");
-
 
 });
 
