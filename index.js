@@ -39,18 +39,26 @@ app.post('/webHooks', function(request,response){
   const linebotParser = bot.parser();
   console.log(linebotParser);
 
-  // pool.connect(function(err,client,done){
-  //
-  //   if(err) return '';
-  //
-  //   client.query('create table teste2(id int not null,anyText varchar(200))');
-  //
-  //   done(err);
-  //
-  // });
+  pool.connect(function(err,client,done){
+
+    if(err) return '';
 
 
-});
+    client.query('select * from teste2',[],function(err,result){
+
+      if(err)return '';
+
+      if(!result){
+        client.query('create table teste2(id int not null,anyText varchar(200))');
+        done(err);
+      }
+
+  });
+
+  done(err);
+
+
+  });
 
 app.get('/', function(request, response){
   response.render('pages/index');
