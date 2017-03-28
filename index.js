@@ -25,7 +25,7 @@ var bot = lineBot({
 /*#########database##############*/
 var mysql = require('mysql');
 var connection = mysql.createPool({
-  host: '23.23.165.47',
+  host: '177.234.153.2',
   user: 'u213826385_tiud',
   password: '123456',
   database: 'u213826385_tiud'
