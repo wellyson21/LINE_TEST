@@ -72,7 +72,17 @@ var server = app.listen(process.env.PORT, function() {
 
     if(err) return '';
 
-    client.query('create table teste(id int not null,anyText varchar(200))');
+
+    client.query('select * from teste',[],function(err,result){
+
+      if(err)return '';
+
+      if(!result){
+        client.query('create table teste(id int not null,anyText varchar(200))');
+        done(err);
+      }
+
+    });
 
     done(err);
 
