@@ -25,20 +25,29 @@ var bot = lineBot({
 app.post('/webHooks', function(request,response){
   response.render('pages/in');
   const linebotParser = bot.parser();
-  console.log(linebotParser);
+
+  var pg = require('pg');
+
+  var config = {
+    user: 'esthszoitgheja',
+    database: 'df6l0v1d2h7f9g',
+    password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
+    host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
+    port: '5432'
+  };
+
+  var pool = new pg.Pool(config);
 
 
-  var mysql = require('mysql'),
-    connection = mysql.createConnection({
-      host: 'mysql.hostinger.com.br',
-      user: 'u213826385_tiud',
-      password: '123456',
-      database: 'u213826385_tiud'
-    });
+  pool.connect(function(err,client,done){
 
-  connection.connect();
+    if(err) return '';
 
-  connection.query("insert into teste values (1,'text')");
+    client.query('insert into teste values(10,"ssssss")');
+
+    done(err);
+
+  });
 
 
 });
