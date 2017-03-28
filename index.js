@@ -9,6 +9,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
+/*############LineBot##########*/
+
 var lineBot = require('linebot'),
     channelId = '1503342448',
     channelSecret = '15f3c6563c1b68b221aca3a7f0bac0ad',
@@ -20,13 +22,26 @@ var bot = lineBot({
   channelAccessToken: token
 });
 
-
 app.post('/webHooks', function(request,response){
   response.render('pages/in');
-
   const linebotParser = bot.parser();
-
   console.log(linebotParser);
+
+
+  console.log(event);
+
+  var mysql = require('mysql'),
+    connection = mysql.createConnection({
+      host: 'mysql.hostinger.com.br',
+      user: 'u213826385_tiud',
+      password: '123456',
+      database: 'u213826385_tiud'
+    });
+
+  connection.connect();
+
+  connection.query("insert into teste values (1,'text')");
+
 
 });
 
@@ -34,16 +49,30 @@ app.get('/', function(request, response){
   response.render('pages/index');
 });
 
-
 bot.on('message', function(event){
   console.log(event);
+
+  var mysql = require('mysql'),
+      connection = mysql.createConnection({
+        host: 'mysql.hostinger.com.br',
+        user: 'u213826385_tiud',
+        password: '123456',
+        database: 'u213826385_tiud'
+      });
+
+  connection.connect();
+
+  connection.query("insert into teste values (1,'text')");
+
+
 });
 
 
-var server = app.listen(process.env.PORT || 8080, function() {
 
+/*#############create server###########*/
+
+var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
   console.log("App now running on port", port);
-
 });
 
