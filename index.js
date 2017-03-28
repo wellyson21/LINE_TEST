@@ -83,11 +83,8 @@ var server = app.listen(process.env.PORT, function() {
     port: '5432'
   };
 
-
   var pool = new pg.Pool(config);
 
-
-  console.log(pool);
 
    pool.connect(function(err,client,done){
 
@@ -99,16 +96,6 @@ var server = app.listen(process.env.PORT, function() {
 
   });
 
-
-  var mysql = require('mysql'),
-    connection = mysql.createConnection({
-      host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
-      user: 'esthszoitgheja',
-      password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
-      database: 'df6l0v1d2h7f9g'
-    });
-
-  connection.connect();
 
   console.log("App now running on port", port);
 
