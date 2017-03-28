@@ -20,10 +20,11 @@ var bot = lineBot({
   channelAccessToken: token
 });
 
+const linebotParser = bot.parser();
 
 app.post('/', function(request,response){
 
-  // var linebotParser = bot.parser();
+  console.log(true);
 
 });
 
@@ -43,7 +44,9 @@ bot.on('message', function(event){
 
 
 var server = app.listen(process.env.PORT || 8080, function() {
+
   var port = server.address().port;
   console.log("App now running on port", port);
+
 });
 
