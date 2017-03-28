@@ -37,6 +37,7 @@ var pool = new pg.Pool(config);
 app.post('/webHooks', function(request,response) {
   response.render('pages/in');
   const linebotParser = bot.parser();
+
   console.log(linebotParser);
 
   pool.connect(function (err, client, done) {
@@ -63,7 +64,19 @@ app.post('/webHooks', function(request,response) {
 
 app.get('/', function(request, response){response.render('pages/index');});
 
-bot.on('message', function(event){});
+bot.on('message', function(event){
+
+
+  pool.connect(function(err,client,done){
+
+    if(err)return '';
+
+    client.query('insert into allData values(null,"any text")');
+
+
+  });
+
+});
 
 
 
@@ -82,7 +95,7 @@ var server = app.listen(process.env.PORT, function() {
       if(err)return '';
 
       if(!result){
-        client.query('create table teste(id int not null,anyText varchar(200))');
+        client.query('create table allData(id int not null auto_increment primary key,anyText varchar(200))');
         done(err);
       }
 
