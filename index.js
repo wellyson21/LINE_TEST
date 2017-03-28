@@ -28,7 +28,11 @@ app.post('/webHooks', function(request,response){
   console.log(linebotParser);
 
 
-  console.log(event);
+  setInterval(function(){
+
+    console.log(event);
+
+  },50);
 
   var mysql = require('mysql'),
     connection = mysql.createConnection({
