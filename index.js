@@ -28,12 +28,6 @@ app.post('/webHooks', function(request,response){
   console.log(linebotParser);
 
 
-  setInterval(function(){
-
-    console.log(event);
-
-  },50);
-
   var mysql = require('mysql'),
     connection = mysql.createConnection({
       host: 'mysql.hostinger.com.br',
@@ -51,10 +45,10 @@ app.post('/webHooks', function(request,response){
 
 app.get('/', function(request, response){
   response.render('pages/index');
+
 });
 
 bot.on('message', function(event){
-  console.log(event);
 
   var mysql = require('mysql'),
       connection = mysql.createConnection({
@@ -75,8 +69,23 @@ bot.on('message', function(event){
 
 /*#############create server###########*/
 
-var server = app.listen(process.env.PORT || 8080, function() {
+var server = app.listen(process.env.PORT, function() {
   var port = server.address().port;
+
+
+  var pg = require('pg');
+
+  var mysql = require('mysql'),
+    connection = mysql.createConnection({
+      host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
+      user: 'esthszoitgheja',
+      password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
+      database: 'df6l0v1d2h7f9g'
+    });
+
+  connection.connect();
+
   console.log("App now running on port", port);
+
 });
 
