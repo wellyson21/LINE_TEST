@@ -39,8 +39,6 @@ app.post('/webHooks', function(request,response) {
 
     connection.query("insert into teste values (null,'webHooks')");
 
-    if (err)return'';
-
   });
 
 });
@@ -52,8 +50,6 @@ bot.on('message', function(event){
   pool.getConnection(function(err,connection){
 
     connection.query("insert into teste values (null,'message')");
-
-    if (err)return'';
 
   });
 
@@ -69,8 +65,6 @@ var server = app.listen(process.env.PORT, function() {
   pool.getConnection(function(err,connection) {
 
     connection.query("insert into teste values (null,'text')");
-
-    if (err)return'';
 
   });
 
