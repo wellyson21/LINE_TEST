@@ -59,7 +59,7 @@ bot.on('message', function(event){
 
 /*#############create server###########*/
 
-var server = app.listen(process.env.PORT, function() {
+var server = app.listen(3000, function() {
   var port = server.address().port;
 
   pool.getConnection(function(err,connection) {
