@@ -22,19 +22,23 @@ var bot = lineBot({
 
 
 app.post('/', function(request,response){
-  var linebotParser = bot.parser();
+
+  // var linebotParser = bot.parser();
 
 });
 
 
 app.get('/', function(request, response){
+
   response.render('pages/index');
 
 });
 
 
 bot.on('message', function(event){
+
   console.log(event);
+
 });
 
 
