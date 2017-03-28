@@ -24,7 +24,7 @@ const linebotParser = bot.parser();
 
 app.post('/', function(request,response){
 
-  console.log(true);
+  response.render('pages/in');
 
 });
 
