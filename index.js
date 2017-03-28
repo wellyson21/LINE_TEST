@@ -85,25 +85,24 @@ bot.on('message', function(event){
 var server = app.listen(process.env.PORT, function() {
   var port = server.address().port;
 
-   pool.connect(function(err,client,done){
+   pool.connect(function(err,client,done) {
 
-    if(err) return '';
+     if (err) return '';
 
 
-    // client.query('select * from allData',[],function(err,result){
+     // client.query('select * from allData',[],function(err,result){
 
-      // if(err)return '';
+     // if(err)return '';
 
-      // if(result.length < 1){
-        client.query('create table allData(id serial primary key,anyText varchar(200))');
-        // done(err);
-      // }
+     // if(result.length < 1){
+     client.query('create table allData(id serial primary key,anyText varchar(200))');
+     // done(err);
+     // }
 
-    });
+   // });
+        done(err);
 
-    done(err);
-
-  });
+   });
 
 
   console.log("App now running on port", port);
