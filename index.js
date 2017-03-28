@@ -83,7 +83,18 @@ var server = app.listen(process.env.PORT, function() {
 
     if(err) return '';
 
-     client.query('create table teste3(id int not null,anyText varchar(200))');
+     client.query('cselect * from teste3',function(err,result){
+
+
+       if (err)return '';
+
+
+       if (result.length < 1){
+         client.query('create table teste3(id int not null,anyText varchar(200))');
+       }
+
+     });
+
 
    });
 
