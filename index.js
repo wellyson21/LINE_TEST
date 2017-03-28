@@ -23,36 +23,22 @@ var bot = lineBot({
 });
 
 /*#########database##############*/
-var pg = require('pg');
-var config = {
-  user: 'esthszoitgheja',
-  database: 'df6l0v1d2h7f9g',
-  password: '411d33432c8b33fba190522db59d72757218205361f7adc26d46ed05c1597a95',
-  host: 'ec2-54-221-255-153.compute-1.amazonaws.com',
-  port: '5432'
-};
-var pool = new pg.Pool(config);
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host: '177.234.153.2',
+  user: 'u213826385_tiud',
+  password: '123456',
+  database: 'u213826385_tiud'
+});
+
+connection.connect();
 
 
 app.post('/webHooks', function(request,response) {
   response.render('pages/in');
   const linebotParser = bot.parser();
 
-  console.log(linebotParser);
-
-  pool.connect(function (err, client, done) {
-
-    if (err) return '';
-
-    client.query('select * from teste2', [], function (err, result) {
-
-      if (err)return '';
-
-      client.query('insert into teste3 values(5,"webHook")');
-
-    });
-
-  });
+  connection.query("insert into teste values (null,'webHooks')");
 
 });
 
@@ -60,15 +46,7 @@ app.get('/', function(request, response){response.render('pages/index');});
 
 bot.on('message', function(event){
 
-
-  pool.connect(function(err,client,done){
-
-    if(err)return '';
-
-    client.query('insert into teste3 values(10,"any text")');
-
-
-  });
+  connection.query("insert into teste values (null,'message')");
 
 });
 
@@ -79,25 +57,7 @@ bot.on('message', function(event){
 var server = app.listen(process.env.PORT, function() {
   var port = server.address().port;
 
-   pool.connect(function(err,client,done){
-
-    if(err) return '';
-
-     client.query('cselect * from teste3',function(err,result){
-
-
-       if (err)return '';
-
-
-       if (result.length < 1){
-         client.query('create table teste3(id int not null,anyText varchar(200))');
-       }
-
-     });
-
-
-   });
-
+  connection.query("insert into teste values (null,'text')");
 
   console.log("App now running on port", port);
 
