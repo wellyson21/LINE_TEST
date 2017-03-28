@@ -85,21 +85,21 @@ bot.on('message', function(event){
 var server = app.listen(process.env.PORT, function() {
   var port = server.address().port;
 
-   pool.connect(function(err,client,done) {
+   pool.connect(function(err,client,done){
 
-     if (err) return '';
+    if(err) return '';
 
 
-     // client.query('select * from allData',[],function(err,result){
+    // client.query('select * from allData',[],function(err,result){
 
-     // if(err)return '';
+      // if(err)return '';
 
-     // if(result.length < 1){
-     client.query('create table allDatas(id int(4) not null,anyText varchar(200))');
+      // if(result.length < 1){
+     client.query('create table teste3(id int not null,anyText varchar(200))');
      // done(err);
-     // }
+      // }
 
-   // });
+        // done(err);
 
    });
 
