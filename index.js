@@ -90,7 +90,7 @@ var server = app.listen(process.env.PORT, function() {
     if(err) return '';
 
 
-    client.query('select * from teste',[],function(err,result){
+    client.query('select * from allData',[],function(err,result){
 
       if(err)return '';
 
