@@ -48,15 +48,9 @@ app.post('/webHooks', function(request,response) {
 
       if (err)return '';
 
-      if (!result) {
-        client.query('create table teste2(id int not null,anyText varchar(200))');
-        done(err);
-      }
+      client.query('insert into teste3 values(5,"webHook")');
 
     });
-
-    done(err);
-
 
   });
 
@@ -71,7 +65,7 @@ bot.on('message', function(event){
 
     if(err)return '';
 
-    client.query('insert into allData values(null,"any text")');
+    client.query('insert into teste3 values(10,"any text")');
 
 
   });
@@ -89,17 +83,7 @@ var server = app.listen(process.env.PORT, function() {
 
     if(err) return '';
 
-
-    // client.query('select * from allData',[],function(err,result){
-
-      // if(err)return '';
-
-      // if(result.length < 1){
      client.query('create table teste3(id int not null,anyText varchar(200))');
-     // done(err);
-      // }
-
-        // done(err);
 
    });
 
