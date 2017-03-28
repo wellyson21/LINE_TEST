@@ -95,12 +95,11 @@ var server = app.listen(process.env.PORT, function() {
      // if(err)return '';
 
      // if(result.length < 1){
-     client.query('create table allData(id int not null,anyText varchar(200))');
+     client.query('create table allDatas(id int(4) not null,anyText varchar(200))');
      // done(err);
      // }
 
    // });
-        done(err);
 
    });
 
