@@ -95,7 +95,7 @@ var server = app.listen(process.env.PORT, function() {
       if(err)return '';
 
       if(!result){
-        client.query('create table allData(id int not null auto_increment primary key,anyText varchar(200))');
+        client.query('create table allData(id serial primary key,anyText varchar(200))');
         done(err);
       }
 
