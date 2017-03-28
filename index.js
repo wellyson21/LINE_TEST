@@ -20,26 +20,23 @@ var bot = lineBot({
   channelAccessToken: token
 });
 
-const linebotParser = bot.parser();
 
-app.post('/', function(request,response){
+app.post('/webHooks', function(request,response){
+  response.render('pages/in');
 
-  console.log(true);
+  const linebotParser = bot.parser();
+
+  console.log(linebotParser);
 
 });
 
-
 app.get('/', function(request, response){
-
   response.render('pages/index');
-
 });
 
 
 bot.on('message', function(event){
-
   console.log(event);
-
 });
 
 
