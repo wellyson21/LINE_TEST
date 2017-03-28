@@ -24,7 +24,7 @@ var bot = lineBot({
 
 /*#########database##############*/
 var mysql = require('mysql');
-var pool = mysql.createPool({
+var connection = mysql.createPool({
   host: '177.234.153.2',
   user: 'u213826385_tiud',
   password: '123456',
@@ -35,11 +35,7 @@ app.post('/webHooks', function(request,response) {
   response.render('pages/in');
   const linebotParser = bot.parser();
 
-  pool.getConnection(function(err, connection){
-
     connection.query("insert into teste values (null,'webHooks')");
-
-  });
 
 });
 
@@ -47,11 +43,7 @@ app.get('/', function(request, response){response.render('pages/index');});
 
 bot.on('message', function(event){
 
-  pool.getConnection(function(err,connection){
-
     connection.query("insert into teste values (null,'message')");
-
-  });
 
 });
 
@@ -59,14 +51,11 @@ bot.on('message', function(event){
 
 /*#############create server###########*/
 
-var server = app.listen(3000, function() {
+var server = app.listen(process.env.PORT, function() {
   var port = server.address().port;
 
-  pool.getConnection(function(err,connection) {
 
     connection.query("insert into teste values (null,'text')");
-
-  });
 
   console.log("App now running on port", port);
 
